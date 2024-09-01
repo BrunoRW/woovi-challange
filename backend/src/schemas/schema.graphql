@@ -1,0 +1,22 @@
+type Account {
+  id: ID!
+  name: String!
+  balance: Float!
+}
+
+type Transaction {
+  id: ID!
+  fromAccount: Account!
+  toAccount: Account!
+  amount: Float!
+}
+
+type Query {
+  accounts: [Account!]!
+  account(id: ID!): Account
+}
+
+type Mutation {
+  createAccount(name: String!, initialBalance: Float!): Account!
+  sendTransaction(fromAccountId: ID!, toAccountId: ID!, amount: Float!): Transaction!
+}
